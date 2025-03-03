@@ -8,31 +8,65 @@ class contador extends StatefulWidget {
 }
 
 class _contadorState extends State<contador> {
+  int clickcontador = 0; 
+
+  void _decrementCounter() {
+    setState(() {
+      if (clickcontador > 0) {
+        clickcontador--; 
+      }
+    });
+  }
+
+  
+  void _resetCounter() {
+    setState(() {
+      clickcontador = 0; 
+    });
+  }
+
   @override
-  int clickcontador = 0;
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Contador.'), //Texto a mostrar
+        title: Text('Contador'), 
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Cantidad de Clicks'), //Texto a mostrar
+            Text('Cantidad de Clicks'), // Texto descriptivo
             Text(
               '$clickcontador',
               style: TextStyle(fontSize: 150, fontWeight: FontWeight.w100),
-            ), //Texto a mostrar
+            ), 
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          clickcontador++;
-          setState(() {});
-        },
-        child: Icon(Icons.plus_one),
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+            onPressed: () {
+              setState(() {
+                clickcontador++;
+              });
+            },
+            child: Icon(Icons.plus_one),
+          ),
+          SizedBox(height: 10), //es para poner un espacion entre botones
+          // Botón para disminuir el contador
+          FloatingActionButton(
+            onPressed: _decrementCounter,
+            child: Icon(Icons.exposure_minus_1),
+          ),
+          SizedBox(height: 10), ////es para poner un espacion entre botones
+          // Botón para reiniciar el contador
+          FloatingActionButton(
+            onPressed: _resetCounter,
+            child: Icon(Icons.refresh),
+          ),
+        ],
       ),
     );
   }
