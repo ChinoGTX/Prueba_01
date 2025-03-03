@@ -54,13 +54,13 @@ class _contadorState extends State<contador> {
             },
             child: Icon(Icons.plus_one),
           ),
-          SizedBox(height: 10), //es para poner un espacion entre botones
+          SizedBox(height: 10), //es para poner un espacio entre botones
           // Botón para disminuir el contador
           FloatingActionButton(
             onPressed: _decrementCounter,
             child: Icon(Icons.exposure_minus_1),
           ),
-          SizedBox(height: 10), ////es para poner un espacion entre botones
+          SizedBox(height: 10), ////es para poner un espacio entre botones
           // Botón para reiniciar el contador
           FloatingActionButton(
             onPressed: _resetCounter,
